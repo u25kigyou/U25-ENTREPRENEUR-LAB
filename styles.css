@@ -1,0 +1,471 @@
+/* ===============================
+   THEME
+   =============================== */
+:root{
+  --bg:#0b0f14;
+  --panel:#0f1620;
+  --ink:#eef3f8;
+  --muted:#9fb3c8;
+  --accent:#d4af37;
+  --line:#1c2530;
+
+  --rail-w: 260px;
+  --rail-gap: 18px;
+  --page-pad-x: 24px;
+}
+
+/* ===============================
+   BASE
+   =============================== */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","游ゴシック",YuGothic,system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; height:auto; display:block; }
+
+a{ color:inherit; text-decoration:none; }
+
+.section{ padding:72px 0; }
+
+.container{
+  width: min(1120px, calc(100vw - (var(--rail-w) + var(--rail-gap)) - var(--page-pad-x) - 24px));
+  margin-left:auto;
+  margin-right:var(--page-pad-x);
+}
+
+/* スマホ時は中央寄せに戻す */
+@media (max-width: 980px){
+  .container{
+    width:min(1120px, calc(100vw - 2*var(--page-pad-x)));
+    margin:0 auto;
+  }
+}
+
+/* ===============================
+   TYPO
+   =============================== */
+.serif{ font-family:"YuMincho","Hiragino Mincho ProN","Noto Serif JP",serif; }
+.sec-title{
+  font-size:clamp(22px,3vw,30px);
+  margin:0 0 22px;
+}
+.lead{
+  color:var(--muted);
+  margin:0;
+}
+.note{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ===============================
+   HERO
+   =============================== */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, rgba(212,175,55,.18), transparent),
+    var(--bg);
+  overflow:hidden;
+  animation:bgSweep 14s linear infinite alternate;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-20% -10% auto -10%;
+  height:180%;
+  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.06) 48%, transparent 66%);
+  pointer-events:none;
+}
+@keyframes bgSweep{
+  0%{ background-position:0 0, 0 0; }
+  100%{ background-position:0 0, 40px 20px; }
+}
+
+.hero__inner{
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero__copy{
+  position:relative;
+  max-width:900px;
+  margin-inline:auto;
+  padding:40px 16px 56px;
+  text-align:center;
+  z-index:1;
+}
+
+.eyebrow{
+  color:var(--accent);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+  margin:0 0 18px;
+}
+
+/* 中央ロゴ */
+.hero__logo{
+  max-width:360px;
+  margin:0 auto 24px;
+  filter:drop-shadow(0 20px 60px rgba(0,0,0,.75));
+}
+.hero__logo img{
+  width:100%;
+  height:auto;
+}
+
+/* リード文 */
+.hero__lead{
+  color:var(--muted);
+  font-size:16px;
+  margin:0 0 18px;
+}
+
+/* バッジ */
+.hero__badges{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:6px 12px;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  font-size:12px;
+  background:rgba(0,0,0,.3);
+  backdrop-filter:blur(4px);
+}
+
+/* ===============================
+   HERO ANIMATION
+   =============================== */
+.hero-anim{
+  opacity:0;
+  transform:translateY(12px);
+  animation:heroFadeUp .9s cubic-bezier(.19,.9,.22,1) forwards;
+}
+.hero-anim__eyebrow{
+  opacity:0;
+  transform:translateY(8px);
+  animation:fadeUp .6s ease-out .1s forwards;
+}
+.hero-anim__logo{
+  opacity:0;
+  transform:translateY(10px) scale(.92);
+  transform-origin:center;
+  animation:logoPop .8s cubic-bezier(.2,1,.24,1) .2s forwards;
+}
+.hero-anim__lead{
+  opacity:0;
+  transform:translateY(10px);
+  animation:fadeUp .7s ease-out .55s forwards;
+}
+.hero-anim__badges{
+  opacity:0;
+  transform:translateY(8px);
+  animation:fadeUp .7s ease-out .8s forwards;
+}
+
+@keyframes heroFadeUp{
+  from{opacity:0; transform:translateY(18px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@keyframes logoPop{
+  0%{opacity:0; transform:translateY(18px) scale(.9);}
+  60%{opacity:1; transform:translateY(-4px) scale(1.03);}
+  100%{opacity:1; transform:translateY(0) scale(1);}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-anim,
+  .hero-anim__eyebrow,
+  .hero-anim__logo,
+  .hero-anim__lead,
+  .hero-anim__badges{
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+  .hero{ animation:none; }
+}
+
+/* ===============================
+   GRID & CARD
+   =============================== */
+.grid-3{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+}
+@media (max-width: 980px){
+  .grid-3{ grid-template-columns:1fr; }
+}
+
+.card,
+.voice-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 20px;
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease-out, box-shadow .18s ease-out, border-color .18s ease-out;
+}
+.card::before,
+.voice-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 55%);
+  opacity:0;
+  transition:opacity .25s ease-out;
+  pointer-events:none;
+}
+.card:hover,
+.voice-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 40px rgba(0,0,0,.55);
+  border-color:rgba(212,175,55,.8);
+}
+.card:hover::before,
+.voice-card:hover::before{
+  opacity:1;
+}
+
+.card__title,
+.voice__title{
+  font-weight:700;
+  margin:0 0 8px;
+}
+.card__text,
+.voice__text{
+  color:var(--muted);
+  margin:0;
+}
+
+/* ===============================
+   SECTION FADE（下からふわっと）
+   =============================== */
+.section-fade{
+  opacity:0;
+  transform:translateY(18px);
+  animation:sectionFade .8s ease-out forwards;
+}
+.features-sec.section-fade{ animation-delay:.15s; }
+.mentors.section-fade{ animation-delay:.25s; }
+.results.section-fade{ animation-delay:.35s; }
+.entry.section-fade{ animation-delay:.45s; }
+
+@keyframes sectionFade{
+  from{opacity:0; transform:translateY(18px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ===============================
+   RESULTS
+   =============================== */
+.results{
+  background:radial-gradient(800px 400px at 80% 0%, rgba(212,175,55,.12), transparent);
+}
+.metrics{ margin-top:16px; }
+.metric{
+  text-align:center;
+  padding:18px 12px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.3);
+  box-shadow:0 12px 32px rgba(0,0,0,.4);
+}
+.metric__num{
+  font-size:34px;
+  font-weight:900;
+  color:var(--accent);
+}
+.metric__label{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ===============================
+   ENTRY
+   =============================== */
+.entry__box{
+  background:var(--panel);
+  border-radius:16px;
+  border:1px solid var(--line);
+  padding:26px 22px 30px;
+}
+.entry__btns{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:14px;
+  border:2px solid var(--accent);
+  cursor:pointer;
+  transition:transform .15s ease-out, box-shadow .15s ease-out, background .15s ease-out, color .15s ease-out;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#111;
+  box-shadow:0 10px 30px rgba(0,0,0,.55);
+}
+.btn-outline{
+  background:transparent;
+  color:var(--ink);
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 36px rgba(0,0,0,.65);
+}
+.btn-outline:hover{
+  background:rgba(212,175,55,.1);
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+.footer{
+  border-top:1px solid var(--line);
+  background:#070a0e;
+}
+.footer__inner{
+  padding:28px 0 32px;
+  text-align:left;
+}
+.footer__company{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 8px;
+}
+.footer__legal{
+  color:var(--muted);
+  font-size:12px;
+  margin:0;
+}
+
+/* ===============================
+   FIXED CTA（左レール）
+   =============================== */
+.fixed-cta{
+  position:fixed;
+  z-index:999;
+  left:var(--rail-gap);
+  top:96px;
+  width:var(--rail-w);
+  padding:14px;
+  background:rgba(11,15,20,0.95);
+  border-radius:16px;
+  border:1px solid var(--line);
+  box-shadow:0 12px 40px rgba(0,0,0,.45);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  backdrop-filter:blur(6px);
+}
+.fixed-cta__btn{
+  display:block;
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:800;
+  font-size:14px;
+  border:2px solid var(--accent);
+  text-align:center;
+  transition:transform .12s ease-out, box-shadow .12s ease-out, background .12s ease-out;
+}
+.fixed-cta__btn.primary{
+  background:var(--accent);
+  color:#111;
+}
+.fixed-cta__btn.outline{
+  background:transparent;
+  color:var(--ink);
+}
+.fixed-cta__btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+.fixed-cta__btn.outline:hover{
+  background:rgba(212,175,55,.08);
+}
+
+/* モバイルでは下部バーに切り替え */
+@media (max-width: 980px){
+  :root{
+    --rail-w: 0px;
+    --rail-gap: 0px;
+  }
+  .fixed-cta{
+    left:10px;
+    right:10px;
+    bottom:12px;
+    top:auto;
+    width:auto;
+    flex-direction:row;
+    justify-content:center;
+  }
+}
+/* ===============================
+   FEATURES：カード内アイコン
+   =============================== */
+.card__icon{
+  width:72px;
+  height:72px;
+  margin:0 auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card__icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));
+  opacity:0;
+  transform:translateY(6px);
+  animation:cardIconFade .6s ease-out forwards;
+}
+
+/* アニメーション（カード登場時） */
+@keyframes cardIconFade{
+  0%{opacity:0; transform:translateY(6px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+/* CTA削除後の調整 */
+.entry--empty{
+  padding:40px 0;
+  min-height:60px;
+  background:none;
+  border:none;
+}
+
+/* ENTRY セクションのタイトルを中央揃え */
+#entry .sec-title {
+  text-align: center;
+  width: 100%;
+}
