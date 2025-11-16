@@ -1,471 +1,508 @@
-/* ===============================
-   THEME
-   =============================== */
 :root{
-  --bg:#0b0f14;
-  --panel:#0f1620;
-  --ink:#eef3f8;
-  --muted:#9fb3c8;
-  --accent:#d4af37;
-  --line:#1c2530;
-
-  --rail-w: 260px;
-  --rail-gap: 18px;
-  --page-pad-x: 24px;
+  --bg:#0f0f12;
+  --panel:#16161a;
+  --text:#f5f7fb;
+  --muted:#b9beca;
+  --brand:#ff6a00; /* お好みで調整 */
+  --accent:#ffd4b4;
+  --card:#1c1c22;
+  --border:#2a2a33;
+  --max: 1100px;
+  --radius: 16px;
+  --shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 
-/* ===============================
-   BASE
-   =============================== */
-*{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; }
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","游ゴシック",YuGothic,system-ui,sans-serif;
-  color:var(--ink);
+  margin:0;
+  font-family:"Noto Sans JP", system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue","Hiragino Sans",Meiryo,sans-serif;
   background:var(--bg);
+  color:var(--text);
   line-height:1.75;
   -webkit-font-smoothing:antialiased;
-}
-img{ max-width:100%; height:auto; display:block; }
-
-a{ color:inherit; text-decoration:none; }
-
-.section{ padding:72px 0; }
-
-.container{
-  width: min(1120px, calc(100vw - (var(--rail-w) + var(--rail-gap)) - var(--page-pad-x) - 24px));
-  margin-left:auto;
-  margin-right:var(--page-pad-x);
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* スマホ時は中央寄せに戻す */
-@media (max-width: 980px){
-  .container{
-    width:min(1120px, calc(100vw - 2*var(--page-pad-x)));
-    margin:0 auto;
-  }
-}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
 
-/* ===============================
-   TYPO
-   =============================== */
-.serif{ font-family:"YuMincho","Hiragino Mincho ProN","Noto Serif JP",serif; }
-.sec-title{
-  font-size:clamp(22px,3vw,30px);
-  margin:0 0 22px;
-}
-.lead{
-  color:var(--muted);
-  margin:0;
-}
-.note{
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* ===============================
-   HERO
-   =============================== */
-.hero{
-  position:relative;
-  background:
-    radial-gradient(1200px 700px at 50% -10%, rgba(212,175,55,.18), transparent),
-    var(--bg);
-  overflow:hidden;
-  animation:bgSweep 14s linear infinite alternate;
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:-20% -10% auto -10%;
-  height:180%;
-  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.06) 48%, transparent 66%);
-  pointer-events:none;
-}
-@keyframes bgSweep{
-  0%{ background-position:0 0, 0 0; }
-  100%{ background-position:0 0, 40px 20px; }
-}
-
-.hero__inner{
-  min-height:80vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.hero__copy{
-  position:relative;
-  max-width:900px;
-  margin-inline:auto;
-  padding:40px 16px 56px;
-  text-align:center;
-  z-index:1;
-}
-
-.eyebrow{
-  color:var(--accent);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.16em;
-  margin:0 0 18px;
-}
-
-/* 中央ロゴ */
-.hero__logo{
-  max-width:360px;
-  margin:0 auto 24px;
-  filter:drop-shadow(0 20px 60px rgba(0,0,0,.75));
-}
-.hero__logo img{
-  width:100%;
-  height:auto;
-}
-
-/* リード文 */
-.hero__lead{
-  color:var(--muted);
-  font-size:16px;
-  margin:0 0 18px;
-}
-
-/* バッジ */
-.hero__badges{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-}
-.badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  padding:6px 12px;
-  border:1px solid var(--accent);
-  color:var(--accent);
-  font-size:12px;
-  background:rgba(0,0,0,.3);
-  backdrop-filter:blur(4px);
-}
-
-/* ===============================
-   HERO ANIMATION
-   =============================== */
-.hero-anim{
-  opacity:0;
-  transform:translateY(12px);
-  animation:heroFadeUp .9s cubic-bezier(.19,.9,.22,1) forwards;
-}
-.hero-anim__eyebrow{
-  opacity:0;
-  transform:translateY(8px);
-  animation:fadeUp .6s ease-out .1s forwards;
-}
-.hero-anim__logo{
-  opacity:0;
-  transform:translateY(10px) scale(.92);
-  transform-origin:center;
-  animation:logoPop .8s cubic-bezier(.2,1,.24,1) .2s forwards;
-}
-.hero-anim__lead{
-  opacity:0;
-  transform:translateY(10px);
-  animation:fadeUp .7s ease-out .55s forwards;
-}
-.hero-anim__badges{
-  opacity:0;
-  transform:translateY(8px);
-  animation:fadeUp .7s ease-out .8s forwards;
-}
-
-@keyframes heroFadeUp{
-  from{opacity:0; transform:translateY(18px);}
-  to{opacity:1; transform:translateY(0);}
-}
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:1; transform:translateY(0);}
-}
-@keyframes logoPop{
-  0%{opacity:0; transform:translateY(18px) scale(.9);}
-  60%{opacity:1; transform:translateY(-4px) scale(1.03);}
-  100%{opacity:1; transform:translateY(0) scale(1);}
-}
-
-@media (prefers-reduced-motion: reduce){
-  .hero-anim,
-  .hero-anim__eyebrow,
-  .hero-anim__logo,
-  .hero-anim__lead,
-  .hero-anim__badges{
-    animation:none !important;
-    opacity:1 !important;
-    transform:none !important;
-  }
-  .hero{ animation:none; }
-}
-
-/* ===============================
-   GRID & CARD
-   =============================== */
-.grid-3{
-  display:grid;
-  gap:18px;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-}
-@media (max-width: 980px){
-  .grid-3{ grid-template-columns:1fr; }
-}
-
-.card,
-.voice-card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:18px 20px;
-  position:relative;
-  overflow:hidden;
-  transition:transform .18s ease-out, box-shadow .18s ease-out, border-color .18s ease-out;
-}
-.card::before,
-.voice-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 55%);
-  opacity:0;
-  transition:opacity .25s ease-out;
-  pointer-events:none;
-}
-.card:hover,
-.voice-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 40px rgba(0,0,0,.55);
-  border-color:rgba(212,175,55,.8);
-}
-.card:hover::before,
-.voice-card:hover::before{
-  opacity:1;
-}
-
-.card__title,
-.voice__title{
-  font-weight:700;
-  margin:0 0 8px;
-}
-.card__text,
-.voice__text{
-  color:var(--muted);
-  margin:0;
-}
-
-/* ===============================
-   SECTION FADE（下からふわっと）
-   =============================== */
-.section-fade{
-  opacity:0;
-  transform:translateY(18px);
-  animation:sectionFade .8s ease-out forwards;
-}
-.features-sec.section-fade{ animation-delay:.15s; }
-.mentors.section-fade{ animation-delay:.25s; }
-.results.section-fade{ animation-delay:.35s; }
-.entry.section-fade{ animation-delay:.45s; }
-
-@keyframes sectionFade{
-  from{opacity:0; transform:translateY(18px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* ===============================
-   RESULTS
-   =============================== */
-.results{
-  background:radial-gradient(800px 400px at 80% 0%, rgba(212,175,55,.12), transparent);
-}
-.metrics{ margin-top:16px; }
-.metric{
-  text-align:center;
-  padding:18px 12px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(0,0,0,.3);
-  box-shadow:0 12px 32px rgba(0,0,0,.4);
-}
-.metric__num{
-  font-size:34px;
-  font-weight:900;
-  color:var(--accent);
-}
-.metric__label{
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* ===============================
-   ENTRY
-   =============================== */
-.entry__box{
-  background:var(--panel);
-  border-radius:16px;
-  border:1px solid var(--line);
-  padding:26px 22px 30px;
-}
-.entry__btns{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:18px;
-}
-.btn{
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-  font-size:14px;
-  border:2px solid var(--accent);
-  cursor:pointer;
-  transition:transform .15s ease-out, box-shadow .15s ease-out, background .15s ease-out, color .15s ease-out;
-}
-.btn-primary{
-  background:var(--accent);
-  color:#111;
-  box-shadow:0 10px 30px rgba(0,0,0,.55);
-}
-.btn-outline{
-  background:transparent;
-  color:var(--ink);
-}
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 36px rgba(0,0,0,.65);
-}
-.btn-outline:hover{
-  background:rgba(212,175,55,.1);
-}
-
-/* ===============================
-   FOOTER
-   =============================== */
-.footer{
-  border-top:1px solid var(--line);
-  background:#070a0e;
-}
-.footer__inner{
-  padding:28px 0 32px;
-  text-align:left;
-}
-.footer__company{
-  color:var(--muted);
-  font-size:13px;
-  margin:0 0 8px;
-}
-.footer__legal{
-  color:var(--muted);
-  font-size:12px;
-  margin:0;
-}
-
-/* ===============================
-   FIXED CTA（左レール）
-   =============================== */
-.fixed-cta{
-  position:fixed;
-  z-index:999;
-  left:var(--rail-gap);
-  top:96px;
-  width:var(--rail-w);
-  padding:14px;
-  background:rgba(11,15,20,0.95);
-  border-radius:16px;
-  border:1px solid var(--line);
-  box-shadow:0 12px 40px rgba(0,0,0,.45);
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  backdrop-filter:blur(6px);
-}
-.fixed-cta__btn{
-  display:block;
-  width:100%;
-  padding:10px 12px;
-  border-radius:10px;
+.container{width:min(100% - 32px, var(--max));margin-inline:auto}
+.section{padding:72px 0}
+.section-alt{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+.section-title{
+  font-size: clamp(22px, 3.2vw, 32px);
   font-weight:800;
-  font-size:14px;
-  border:2px solid var(--accent);
-  text-align:center;
-  transition:transform .12s ease-out, box-shadow .12s ease-out, background .12s ease-out;
+  letter-spacing:.02em;
 }
-.fixed-cta__btn.primary{
-  background:var(--accent);
+.section-head{margin-bottom:28px}
+.lead{color:var(--muted)}
+
+.bar{color:var(--brand)}
+
+.nowrap{white-space:nowrap}
+
+.btn-primary{
+  display:inline-block;
+  background:var(--brand);
   color:#111;
+  padding:12px 80px;
+  border-radius:999px;
+  font-weight:700;
+  box-shadow:var(--shadow);
+  transition:transform .12s ease, filter .12s ease;
 }
-.fixed-cta__btn.outline{
-  background:transparent;
-  color:var(--ink);
+.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-primary.small{padding:8px 14px;font-size:14px}
+.btn-lg{padding:16px 28px;font-size:18px}
+
+/* Hero専用ボタン（画像版） */
+.btn-hero-img{
+  display:inline-block;
+  transition:transform .12s ease, filter .12s ease;
 }
-.fixed-cta__btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
+.btn-hero-img:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
 }
-.fixed-cta__btn.outline:hover{
-  background:rgba(212,175,55,.08);
+.btn-hero-img img{
+  display:block;
+  height:auto;
+  max-width:290px;
+  width:110%;
 }
 
-/* モバイルでは下部バーに切り替え */
-@media (max-width: 980px){
-  :root{
-    --rail-w: 0px;
-    --rail-gap: 0px;
-  }
-  .fixed-cta{
-    left:10px;
-    right:10px;
-    bottom:12px;
-    top:auto;
-    width:auto;
-    flex-direction:row;
-    justify-content:center;
-  }
+/* Header */
+.site-header{
+  position:sticky; top:0; z-index:9999;
+  background:rgba(15,15,18,.95);
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:16px;
+  padding:10px 16px;
 }
-/* ===============================
-   FEATURES：カード内アイコン
-   =============================== */
-.card__icon{
-  width:72px;
-  height:72px;
-  margin:0 auto 12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.logo{font-weight:800; letter-spacing:.04em; display:flex; align-items:center}
+/* ロゴ画像のサイズ調整（PC版） */
+.logo-img{height:40px; width:auto; display:block}
+.site-nav{margin-left:auto; display:flex; gap:18px; align-items:center}
+.site-nav a{opacity:.9}
+.nav-toggle{
+  display:none; width:44px; height:40px; background:none; border:0; cursor:pointer;
 }
+.nav-toggle span{display:block;height:2px;background:var(--text);margin:7px 0}
 
-.card__icon img{
-  width:100%;
+/* ===== Hero（トップページ）===== */
+.hero{
+  /* セクションの高さ調整（90vh～100vhで調整可能） */
+  min-height:95vh;
+  
+  display:grid; place-items:center;
+  text-align:center;
+  
+  /* 背景画像の設定 */
+  background-image: url('Doubleach_top (1).png');
+  
+  /* 画像のサイズ調整（cover = 画面全体に表示 / contain = 画像全体を表示） */
+  background-size: 100%;
+  
+  /* 画像の表示位置調整（重要！）
+     - 横位置: left, center, right または 0%～100%
+     - 縦位置: top, center, bottom または 0%～100%
+     - 例: center 0% = 画像上部, center 50% = 中央, center 100% = 下部 */
+  background-position: center 55%;
+  
+  background-repeat: no-repeat;
+  position: relative;
+}
+.hero__inner{
+  padding:64px 20px; 
+  display:grid; 
+  place-items:center; 
+  width:100%; 
   height:100%;
-  object-fit:contain;
-  filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));
-  opacity:0;
-  transform:translateY(6px);
-  animation:cardIconFade .6s ease-out forwards;
+  min-height:95vh; /* .heroと同じ値にする */
+}
+.hero__cta{
+  position:absolute;
+  /* ボタンの位置調整（数値を大きく = 上に移動、小さく = 下に移動） */
+  bottom:20px;
+  left:75%;
+  transform:translateX(-25%);
 }
 
-/* アニメーション（カード登場時） */
-@keyframes cardIconFade{
-  0%{opacity:0; transform:translateY(6px);}
-  100%{opacity:1; transform:translateY(0);}
+/* モバイル対応 */
+@media (max-width: 760px){
+  .hero{
+    /* モバイル時のセクション高さ */
+    min-height:75vh;
+    /* モバイル時の背景画像を変更 */
+    background-image: url('Doubleach_mobile_top.png');
+    /* モバイル時の画像表示位置 */
+    background-position: center 23%;
+  }
+  .hero__inner{min-height:75vh}
+  /* モバイル時のボタン位置と設定 */
+  .hero__cta{
+    /* ボタンを中央に配置 */
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  /* モバイル時のボタン画像を大きく */
+  .btn-hero-img img{
+    max-width:350px;
+    width:100%;
+  }
 }
 
-/* CTA削除後の調整 */
-.entry--empty{
-  padding:40px 0;
-  min-height:60px;
-  background:none;
-  border:none;
+/* Cards & grid */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+.h4{font-size: clamp(18px, 2.4vw, 22px); margin:0 0 8px; font-weight:700}
+
+.grid{
+  display:grid; gap:18px; align-items:stretch;
+}
+.grid.two{grid-template-columns:1fr; }
+.grid.three{grid-template-columns:1fr; }
+@media (min-width: 760px){
+  .grid.two{grid-template-columns:1fr 1fr}
+  .grid.three{grid-template-columns:repeat(3, 1fr)}
 }
 
-/* ENTRY セクションのタイトルを中央揃え */
-#entry .sec-title {
-  text-align: center;
+/* Statement */
+.statement{
+  margin-top:18px;
+  padding:18px 20px;
+  border-left:4px solid var(--brand);
+  background:rgba(255,106,0,.06);
+  border-radius:8px;
+}
+
+/* Cases */
+.case{
+  display:grid; gap:18px;
+  grid-template-columns:1fr;
+  align-items:center;
+  margin-bottom:18px;
+}
+.case--reverse{direction:rtl}
+.case--reverse .case__body{direction:ltr}
+.case__image{aspect-ratio: 16/9; overflow:hidden; border-radius:var(--radius); background:#0c0c0f; border:1px solid var(--border)}
+.img-ph{display:grid;place-items:center;height:100%;color:var(--muted)}
+.case__body .h4{margin-top:-4px}
+
+/* Steps */
+.steps{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:18px;
+}
+.step{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px}
+.step h3{margin:0 0 6px}
+
+/* FAQ */
+.faq{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 18px;
+  background:var(--panel);
+  margin: 10px 0;
+}
+.faq > summary{
+  cursor:pointer; font-weight:700;
+}
+.faq[open]{background:#1b1b22}
+
+/* CTA */
+.cta{
+  text-align:center;
+  background:
+    radial-gradient(800px 400px at 50% -20%, rgba(255,106,0,.20), transparent 70%),
+    linear-gradient(180deg, #131316, #0f0f12);
+}
+.cta-title{font-size: clamp(22px, 3.6vw, 34px); margin:0 0 8px}
+.cta-sub{color:var(--muted); margin:0 0 18px}
+
+/* CTA背景画像版 */
+.section-cta-bg{
+  /* 背景画像の設定 */
+  background-image: url('Doubleach_down.png');
+  
+  /* 画像サイズ調整
+     - 100% auto = 横幅100%、高さは自動（推奨）
+     - cover = 画面全体に表示 */
+  background-size: 100% auto;
+  
+  /* 画像の表示位置調整 */
+  background-position: center top;
+  background-repeat: no-repeat;
+  
+  /* セクションの最小高さ（PC版は削除して画像サイズに合わせる） */
+  min-height: 0;
+  
+  background-color: transparent;
   width: 100%;
+  position: relative;
+  
+  /* CTAとフッターの間の余白を調整（0 = 余白なし、30px = 少し余白） */
+  padding-bottom: 0px;
+}
+
+.cta__inner{
+  position: relative;
+  width: 100%;
+  /* 画像のアスペクト比に合わせた高さを確保（調整可能: 40%, 50%, 60% など） */
+  padding-top: 40%;
+}
+
+/* ===== CTAボタンの位置調整（PC版/Web版）===== */
+.cta-button{
+  position: absolute;
+  
+  /* PC版：上下位置の調整（数値を大きく = 上に移動、小さく = 下に移動） */
+  bottom: 350px;
+  
+  /* PC版：左右位置の調整（75% = 右寄り、50% = 中央、30% = 左寄り） */
+  left: 75%;
+  transform: translateX(-50%);
+  
+  /* 画像ボタンのスタイル */
+  display: inline-block;
+  transition: transform .12s ease, filter .12s ease;
+}
+.cta-button:hover{
+  transform: translateX(-50%) translateY(-2px);
+  filter: brightness(1.05);
+}
+.cta-button img{
+  display: block;
+  height: auto;
+  max-width: 350px;
+  width: 100%;
+}
+
+/* Q&Aセクション（PC版）*/
+#faq{
+  /* StepとQ&Aの間の余白調整（0 = 余白なし、30px = 少し余白、72px = デフォルト） */
+  padding-top: 10px;
+  /* Q&Aセクション全体の背景色（調整可能: #000, #111, var(--bg) など） */
+  background: var(--bg);
+}
+
+/* Q&Aセクションのモバイル対応 */
+@media (max-width: 760px){
+  #faq{
+    /* Q&Aセクションの縦幅調整（padding値を変更: 40px, 60px など） */
+    padding-top: 20px;
+    padding-bottom: 40px;
+    /* 左右の余白を調整（0 = 余白なし、16px = 左右に16pxずつ） */
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    /* StepとQ&Aの間を詰める（負の値で上に移動して白い余白を削除） */
+    margin-top: -88px;
+    /* Q&Aセクション全体の背景色 */
+    background: var(--bg);
+  }
+  #faq .section-head,
+  #faq .faq{
+    /* Q&Aの中身に余白を追加（調整可能: 10px, 20px など） */
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  #faq .section-title{
+    /* Q&Aタイトルの色を白に */
+    color: var(--text);
+  }
+}
+
+/* CTAセクションのモバイル対応 */
+@media (max-width: 760px){
+  .section-cta-bg{
+    /* モバイル時の最小高さ */
+    min-height: 0;
+    background-size: 100% auto;
+    background-color: transparent;
+    /* CTAとフッターの間の余白を調整（0 = 余白なし、30px = 少し余白） */
+    padding-bottom: 0px;
+  }
+  .cta__inner{
+    /* 画像のアスペクト比に合わせた高さ（調整可能: 60%, 80%, 100% など） */
+    padding-top: 30%;
+    min-height: 0;
+  }
+  /* ===== モバイル版：CTAボタンの位置調整 ===== */
+  .cta-button{
+    /* モバイル版：上下位置の調整（数値を大きく = 上に移動、小さく = 下に移動） */
+    bottom: 85px;
+    /* モバイル版：左右位置の調整（50% = 中央、70% = 右寄り、30% = 左寄り） */
+    left: 70%;
+  }
+}
+
+/* Footer */
+.site-footer{
+  border-top:1px solid var(--border);
+  background:#0e0e11;
+  color:var(--muted);
+}
+.footer-inner{display:flex; justify-content:space-between; align-items:center; padding:18px 0}
+.brand{color:var(--text); font-weight:700; margin:0}
+.footer-logo{height:50px; width:auto; display:block;transform: scale(1.5);}
+
+
+/* ===== About / Service / Case セクション（背景画像） ===== */
+
+/* ----- Aboutセクション ----- */
+.section-about{
+  /* 背景画像の設定 */
+  background-image: url('Doubleach_about.png');
+  
+  /* 画像サイズ調整
+     - 100% auto = 横幅100%、高さは自動（推奨）
+     - cover = 画面全体に表示（画像が切れる可能性あり）
+     - contain = 画像全体を表示（余白ができる） */
+  background-size: 100% auto;
+  
+  /* 画像の表示位置調整
+     - 横: left, center, right
+     - 縦: top, center, bottom */
+  background-position: center top;
+  
+  background-repeat: no-repeat;
+  
+  /* セクションの最小高さ（画像が見切れる場合は増やす: 900px, 1000pxなど） */
+  min-height: 1000px;
+  
+  background-color: #fff;
+  width: 100%;
+}
+
+/* ----- Serviceセクション ----- */
+.section-service{
+  background-image: url('Doubleach_service.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  /* 画像が見切れる場合はこの値を調整: 900px, 1000px など */
+  min-height: 800px;
+  background-color: #fff;
+  width: 100%;
+}
+
+/* ----- Caseセクション ----- */
+.section-case{
+  background-image: url('Doubleach_case.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  /* 画像が見切れる場合はこの値を調整: 900px, 1000px など */
+  min-height: 1300px;
+  background-color: #fff;
+  width: 100%;
+}
+
+/* ----- Stepセクション ----- */
+.section-step{
+  background-image: url('Doubleach_step.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  /* 画像が見切れる場合はこの値を調整: 900px, 1000px など */
+  min-height: 880px;
+  background-color: #fff;
+  width: 100%;
+}
+
+/* モバイル対応 */
+@media (max-width: 760px){
+  /* すべてのセクションに共通の設定 */
+  .section-about, .section-service, .section-case, .section-step{
+    /* モバイル時も横幅100%で表示 */
+    background-size: 100% auto;
+  }
+  
+  /* 各セクションの高さを個別に調整 */
+  .section-about{
+    /* Aboutセクションの高さ（調整可能: 400px, 600px など） */
+    min-height: 300px;
+  }
+  .section-service{
+    /* Serviceセクションの高さ（調整可能: 400px, 600px など） */
+    min-height: 280px;
+  }
+  .section-case{
+    /* Caseセクションの高さ（調整可能: 400px, 600px など） */
+    min-height: 330px;
+  }
+  .section-step{
+    /* Stepセクションの高さ（調整可能: 400px, 600px など） */
+    min-height: 300px;
+    /* StepとQ&Aの間の余白を削除（0 = 余白なし、40px = 少し余白） */
+    padding-bottom: 0px;
+  }
+}
+
+/* Utility */
+.sp-only{display:none}
+@media (max-width: 760px){
+  .sp-only{display:inline}
+}
+
+/* ===== モバイルナビゲーション ===== */
+@media (max-width: 900px){
+  .site-header{
+    flex-wrap: nowrap;
+  }
+  .nav-toggle{
+    display:inline-block;
+    margin-left:auto;
+    position: relative;
+    z-index: 10001;
+  }
+  .site-nav{
+    position:fixed; 
+    /* メニューの上端位置（ヘッダーの下に合わせる） */
+    top: 60px;
+    right: 0;
+    /* メニューの下端位置（調整可能: auto = 自動、0 = 画面下部まで） */
+    bottom: auto;
+    left: auto;
+    /* メニューの幅（調整可能: 250px, 300px など） */
+    width: 280px;
+    /* メニューの最大高さ（調整可能: 400px, 500px, 画面全体なら calc(100vh - 60px)） */
+    max-height: calc(100vh - 60px);
+    /* メニューの背景色（調整可能: #333, rgba(0,0,0,0.9) など） */
+    background: #1a1a1a;
+    flex-direction:column; 
+    gap:0; 
+    padding:10px;
+    transform:translateX(100%); 
+    transition:transform .3s ease;
+    visibility: hidden;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.95);
+    overflow-y: auto;
+  }
+  .site-nav.open{
+    transform:translateX(0);
+    visibility: visible;
+  }
+  .site-nav a{
+    display:block; 
+    padding:16px 12px; 
+    border-bottom:1px solid var(--border);
+    opacity: 1;
+  }
+  /* モバイル版で無料相談ボタンを非表示 */
+  .site-nav .btn-primary.small{
+    display: none;
+  }
+  .no-scroll{overflow:hidden}
+  /* ロゴ画像のサイズ調整（モバイル版） */
+  .logo-img{height:30px}
 }
