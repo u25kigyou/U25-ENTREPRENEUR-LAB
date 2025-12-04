@@ -3,123 +3,174 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Doubleach｜つまずきは、成り上がりの始まりだ。</title>
-  <meta name="description" content="遠回りが、その経験が、“強さ”に変わる。中退・休学・非進学などのバックグラウンドを持つ若者のための就職・転職支援。">
-  <meta property="og:title" content="Doubleach｜つまずきは、成り上がりの始まりだ。">
-  <meta property="og:description" content="遠回りが、その経験が、“強さ”に変わる。中退・休学・非進学などのバックグラウンドを持つ若者のための就職・転職支援。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://your-domain.example/"> <!-- TODO: 公開URLに変更 -->
-  <meta property="og:image" content="assets/ogp.jpg"> <!-- TODO: 画像差し替え -->
-  <link rel="icon" href="assets/favicon.png"> <!-- TODO: 差し替え -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <title>U25起業ラボ｜25歳以下の“選ばれた戦略家”のためのコミュニティ</title>
+  <meta name="description" content="25歳以下（大学生〜社会人3年目/フリーター）。起業・副業・年収アップをデータとロジックで設計。上場企業経営者や20代起業家がメンターとして伴走。">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="#top">
-      <img src="ダブリーチ.png" alt="Doubleach" class="logo-img">
-    </a>
-    <button class="nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="メニュー">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="nav" class="site-nav" aria-label="主要ナビゲーション">
-      <a href="#about">About</a>
-      <a href="#services">Service</a>
-      <a href="#cases">Case</a>
-      <a href="#flow">Step</a>
-      <a href="#faq">Q&A</a>
-      <a class="btn-primary small" href="#cta">無料相談</a>
-    </nav>
-  </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero__inner">
-        <div class="hero__cta">
-          <a href="#cta" class="btn-hero-img">
-            <img src="まずは無料相談.png" alt="まずは無料相談">
-          </a>
+  <!-- ===== 左固定CTA（PC）／下部バー（SP） ===== -->
+  <nav class="fixed-cta" aria-label="固定アクション">
+  <a class="fixed-cta__btn primary" href="https://lin.ee/N8hFc68">
+      個別カジュアル面談に申し込む
+    </a>
+    <a class="fixed-cta__btn outline" href="https://lin.ee/N8hFc68">
+      U25ネクストリーダーセッションに申し込む
+    </a>
+  </nav>
+
+  <!-- ===== HERO：中央にU25.pngロゴ（アニメあり） ===== -->
+  <section class="section hero" id="top" aria-label="ファーストビュー">
+    <div class="container hero__inner hero--centered">
+      <div class="hero__copy hero-anim">
+        <p class="eyebrow hero-anim__eyebrow">U25 ENTREPRENEUR LAB</p>
+
+        <!-- 中央の大きいロゴ -->
+        <div class="hero__logo hero-anim__logo">
+          <img src="./U25.png" alt="U25 Entrepreneur Labo ロゴ">
+        </div>
+
+        <!-- リード文 -->
+        <p class="hero__lead hero-anim__lead">
+          学び／起業ノウハウ／ビジネスアイデアの壁打ちを、“ホンモノの経営者”と共に。<br>
+          上場企業経営者・20代起業家がメンターとして伴走します。
+        </p>
+
+        <!-- バッジ -->
+        <div class="hero__badges hero-anim__badges">
+          <span class="badge">企業経営者メンタリング</span>
+          <span class="badge">起業支援</span>
+          <span class="badge">年収アップ支援</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="section section-about">
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="section section-service">
-    </section>
-
-    <!-- Cases -->
-    <section id="cases" class="section section-case">
-    </section>
-
-    <!-- Flow -->
-    <section id="flow" class="section section-step">
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section container">
-      <div class="section-head">
-        <h2 class="section-title">Q&amp;A</h2>
-      </div>
-
-      <details class="faq">
-        <summary>本当に無料ですか？</summary>
-        <p>はい、完全無料です。相談〜企業紹介〜入社後フォローまで費用はかかりません。</p>
-      </details>
-
-      <details class="faq">
-        <summary>学歴や経験に自信がないのですが本当に大丈夫ですか？</summary>
-        <p>もちろんです。ダブリーチは学歴ではなく、あなたの経験や想いを大切にします。特に中退・休学・非進学の方を積極的に支援しています。</p>
-      </details>
-
-      <details class="faq">
-        <summary>どんな企業を紹介してもらえますか？</summary>
-        <p>IT、営業、マーケティング、クリエイティブなど幅広い業界・職種をご紹介。希望や適性に合わせて最適な企業とマッチングします。</p>
-      </details>
-
-      <details class="faq">
-        <summary>相談だけでもいいですか？</summary>
-        <p>もちろん大歓迎です。「話だけ聞きたい」でもOK。気軽にご相談ください。</p>
-      </details>
-    </section>
-
-    <!-- CTA -->
-    <section id="cta" class="section cta section-cta-bg">
-      <div class="cta__inner">
-        <a href="#" class="cta-button">
-          <img src="cta_ボタン.png" alt="無料相談フォームへ">
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="brand">
-        <img src="ダブリーチ.png" alt="Doubleach" class="footer-logo">
+  <!-- ===== ABOUT ===== -->
+  <section class="section about section-fade" id="about">
+    <div class="container">
+      <h2 class="sec-title serif">なぜ、若いうちに「戦略会議」を始めるのか？</h2>
+      <p class="lead">
+        起業志向・年収アップ志向の強い20代前半は、伸びしろの宝庫です。<br>
+        ただし、多くの人が「正しい環境」や「本物の経営者」にアクセスできていません。<br>
+        U25起業ラボは、そんな“埋もれた逸材”に早期アプローチし、再現性のある成長戦略を一緒に描くための場です。
       </p>
-      <small>© <span id="year"></span> Doubleach</small>
+    </div>
+  </section>
+
+<!-- ===== FEATURES（コミュニティでできること） ===== -->
+<section class="section features-sec section-fade" id="features">
+  <div class="container">
+    <h2 class="sec-title serif">コミュニティでできること</h2>
+    <div class="grid-3">
+
+      <article class="card">
+        <div class="card__icon">
+          <img src="./comunity01.png" alt="起業ノウハウを体系的に学ぶ アイコン">
+        </div>
+        <h3 class="card__title">01｜超実践的ノウハウを学ぶ</h3>
+        <p class="card__text">
+          アイデア検証、ビジネスモデル設計、PMF、採用・組織づくりまで。<br>
+          感覚論ではなくフレームワークと実例で学びます。
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <img src="./comunity02.png" alt="経営者と本気の壁打ち アイコン">
+        </div>
+        <h3 class="card__title">02｜経営者と本気の壁打ち</h3>
+        <p class="card__text">
+          上場企業経営者や20代起業家と直接1on1/少人数で壁打ち。<br>
+          「やる/やらない」の判断から、次の一手まで一緒に決めていきます。
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <img src="./comunity03.png" alt="志の高い仲間と出会う アイコン">
+        </div>
+        <h3 class="card__title">03｜志の高い仲間と出会う</h3>
+        <p class="card__text">
+          SNS・紹介・クチコミで集まった “志が同じU25の『本当の仲間』” と長期でつながれます。
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ===== MENTORS ===== -->
+  <section class="section mentors section-fade" id="mentors">
+    <div class="container">
+      <h2 class="sec-title serif">講師 / メンター</h2>
+      <div class="grid-3">
+        <article class="voice-card">
+          <h3 class="voice__title">上場企業経営者　T様</h3>
+          <p class="voice__text">
+            年間複数社の新規事業・投資を手掛ける実務家。<br>
+            「数字で語る」ことを徹底し、事業の勝ち筋を一緒に設計します。
+          </p>
+        </article>
+        <article class="voice-card">
+          <h3 class="voice__title">20代起業家 K様</h3>
+          <p class="voice__text">
+            学生時代に起業し、グロース〜M&amp;Aまで経験。<br>
+            U25のリアルな視点で、あなたのアイデアを磨き上げます。
+          </p>
+        </article>
+        <article class="voice-card">
+          <h3 class="voice__title">スタートアップCXO S様</h3>
+          <p class="voice__text">
+            採用/組織/ファイナンスに精通したスタートアップ経営陣。<br>
+            手触りのある戦略と実行プランに落とし込むのが得意です。
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section class="section results section-fade" id="results">
+    <div class="container">
+      <h2 class="sec-title serif">U25起業ラボ 成功事例</h2>
+      <div class="grid-3 metrics">
+        <div class="metric">
+          <div class="metric__num">28</div>
+          <div class="metric__label">独立支援（出資なし）</div>
+        </div>
+        <div class="metric">
+          <div class="metric__num">11</div>
+          <div class="metric__label">起業支援（出資あり）</div>
+        </div>
+        <div class="metric">
+          <div class="metric__num">63</div>
+          <div class="metric__label">年収+100万円以上</div>
+        </div>
+  </section>
+
+<!-- ===== ENTRY（テキスト・ボタン削除済） ===== -->
+<section class="section entry section-fade" id="entry">
+  <div class="container">
+    <h2 class="sec-title serif">あなたの人生を変えるのは<br>誰との戦略会議か？</h2>
+
+    <div class="entry__box entry--empty">
+      <!-- ここは意図的に空欄（テキスト・ボタン無し） -->
+    </div>
+  </div>
+</section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p class="footer__company">
+        運営会社名：株式会社HR総合研究所<br>
+        所在地：東京都◯◯区◯◯◯◯
+      </p>
+      <p class="footer__legal">© 2025 U25 Entrepreneur Lab</p>
     </div>
   </footer>
 
-  <script>
-    // 年号
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // モバイルナビ
-    const btn = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('nav');
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
-    });
-  </script>
 </body>
 </html>
